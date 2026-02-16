@@ -1,11 +1,9 @@
-import React from 'react';
-
-const InitPage: React.FC = () => {
+function InitPage() {
     return (
-        <div>
-            <h1>Init Page</h1>
+        <div style={{ backgroundColor: "white", color: "black", padding: "20px" }}>
+            Init Page funcionando
         </div>
     );
-};
+}
 
 export default InitPage;

@@ -1,11 +1,5 @@
-import React from 'react';
-
-const EventsPage: React.FC = () => {
-    return (
-        <div>
-            <h1>Events Page</h1>
-        </div>
-    );
-};
+function EventsPage() {
+    return <div>Events Page</div>;
+}
 
 export default EventsPage;

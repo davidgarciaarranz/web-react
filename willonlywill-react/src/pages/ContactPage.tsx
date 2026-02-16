@@ -1,11 +1,5 @@
-import React from 'react';
-
-const ContactPage: React.FC = () => {
-    return (
-        <div>
-            <h1>Contact Page</h1>
-        </div>
-    );
-};
+function ContactPage() {
+    return <div>Contact Page</div>;
+}
 
 export default ContactPage;
