@@ -1,4 +1,4 @@
-import { useCookies } from "../context/CookiesContext";
+import { useCookies } from "../../context/CookiesContext";
 
 const CookieModal = () => {
     const { accepted, acceptCookies } = useCookies();
