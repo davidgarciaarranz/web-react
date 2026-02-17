@@ -2,6 +2,7 @@
 export const firebaseService = {
     // Add firebase methods here
 };
+import type { Info } from "../models/Info";
 import { db } from "./firebase";
 import {
     collection,
@@ -17,6 +18,14 @@ export const getEvents = async () => {
         id: doc.id,
         ...doc.data()
     }));
+};
+
+export const getInfo = async (): Promise<Info[]> => {
+    const querySnapshot = await getDocs(collection(db, "info"));
+    return querySnapshot.docs.map(doc => ({
+        id: doc.id,
+        ...doc.data()
+    } as Info));
 };
 
 export const listenEvents = (callback: (data: any[]) => void) => {
