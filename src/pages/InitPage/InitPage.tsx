@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import { getInfo } from "../../services/firebaseService";
-import { useCookies } from "../../context/CookiesContext";
 import portadaImg from "../../assets/images/portada.png";
 import "./InitPage.scss";
 
@@ -29,7 +28,7 @@ const InitPage = () => {
     const [textoCopiado, setTextoCopiado] = useState(false);
     const [isFirefox, setIsFirefox] = useState(false);
 
-    const { accepted, acceptCookies } = useCookies();
+    //const { accepted, acceptCookies, rejectCookies } = useCookies();
     const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
     useEffect(() => {
@@ -170,14 +169,6 @@ const InitPage = () => {
                     )}
                 </button>
             </div>
-
-            {/* Modal de Cookies (Si es necesario mantenerlo en esta página) */}
-            {!accepted && (
-                <div className="cookie-modal">
-                    <p>Esta web utiliza cookies para mejorar tu experiencia.</p>
-                    <button onClick={acceptCookies}>Aceptar</button>
-                </div>
-            )}
         </div>
     );
 };
