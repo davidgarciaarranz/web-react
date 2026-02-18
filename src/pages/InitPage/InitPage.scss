@@ -5,7 +5,7 @@
     flex-direction: column;
     background-color: black;
     align-items: center;
-    margin-top: 6rem;
+    margin-top: 0;
     min-height: 100vh;
 }
 
@@ -82,24 +82,9 @@
 .imgAutor-1 {
     margin-top: 20px;
     width: 100%;
-    animation: breath 3s infinite ease-in-out;
 
     @media (min-width: 767px) {
         margin-top: 35px;
-    }
-}
-
-@keyframes breath {
-    0% {
-        transform: scale(1);
-    }
-
-    50% {
-        transform: scale(1.05);
-    }
-
-    100% {
-        transform: scale(1);
     }
 }
 
@@ -156,8 +141,8 @@
     justify-content: center;
 
     img {
-        width: 30%;
-        height: 30%;
+        width: 60%;
+        height: 60%;
 
         @media (max-width: 767px) {
             height: 400px;
@@ -192,7 +177,7 @@
     }
 
     .prev {
-        left: 30%;
+        left: 15%;
 
         @media (max-width: 767px) {
             left: 5%;
@@ -200,7 +185,7 @@
     }
 
     .next {
-        right: 30%;
+        right: 15%;
 
         @media (max-width: 767px) {
             right: 5%;
