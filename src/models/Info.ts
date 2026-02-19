@@ -9,4 +9,6 @@ export interface Info {
     instagramurl?: string;
     tiktokurl?: string;
     youtubeurl?: string;
+    cookie: string;
+    CookieInfo: string;
 }

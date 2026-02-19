@@ -4,7 +4,6 @@ import type { Info } from '../../models/Info';
 import './Footer.scss';
 
 // Assets (Assuming they are copied to src/assets)
-import logo from '../../assets/images/LOGO-NEGRO-SIN-FONDO.png';
 import facebookIcon from '../../assets/icons/facebook.svg';
 import instagramIcon from '../../assets/icons/instagram.svg';
 import tiktokIcon from '../../assets/icons/tik-tok.svg';
@@ -39,40 +38,24 @@ const Footer: React.FC = () => {
             <div className="copyright">© {new Date().getFullYear()}</div>
             <div className="social-icons">
                 {info?.facebookurl && (
-                    <img
-                        className="social-icon"
-                        src={facebookIcon}
-                        onClick={() => goTo(info?.facebookurl)}
-                        title="Visita Facebook"
-                        alt="Facebook"
-                    />
+                    <button className="social-btn" onClick={() => goTo(info.facebookurl!)} title="Visita Facebook">
+                        <img src={facebookIcon} alt="Facebook" className="social-icon" />
+                    </button>
                 )}
                 {info?.instagramurl && (
-                    <img
-                        className="social-icon"
-                        src={instagramIcon}
-                        onClick={() => goTo(info?.instagramurl)}
-                        title="Visita Instagram"
-                        alt="Instagram"
-                    />
+                    <button className="social-btn" onClick={() => goTo(info.instagramurl!)} title="Visita Instagram">
+                        <img src={instagramIcon} alt="Instagram" className="social-icon" />
+                    </button>
                 )}
                 {info?.tiktokurl && (
-                    <img
-                        className="social-icon"
-                        src={tiktokIcon}
-                        onClick={() => goTo(info?.tiktokurl)}
-                        title="Visita TikTok"
-                        alt="TikTok"
-                    />
+                    <button className="social-btn" onClick={() => goTo(info.tiktokurl!)} title="Visita TikTok">
+                        <img src={tiktokIcon} alt="TikTok" className="social-icon" />
+                    </button>
                 )}
                 {info?.youtubeurl && (
-                    <img
-                        className="social-icon"
-                        src={youtubeIcon}
-                        onClick={() => goTo(info?.youtubeurl)}
-                        title="Visita YouTube"
-                        alt="YouTube"
-                    />
+                    <button className="social-btn" onClick={() => goTo(info.youtubeurl!)} title="Visita YouTube">
+                        <img src={youtubeIcon} alt="YouTube" className="social-icon" />
+                    </button>
                 )}
             </div>
         </footer>

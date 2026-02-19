@@ -1,7 +1,3 @@
-// Firebase service placeholder
-export const firebaseService = {
-    // Add firebase methods here
-};
 import type { Info } from "../models/Info";
 import { db } from "./firebase";
 import {
@@ -19,7 +15,7 @@ export const getEvents = async () => {
         ...doc.data()
     }));
 };
-
+//LLAMADAS A LA COLECCIÓN CON FUNCIONES EN FIRESTORE CON MODELS/INFO.TS (PARA DEFINIR EL TIPADO)
 export const getInfo = async (): Promise<Info[]> => {
     const querySnapshot = await getDocs(collection(db, "info"));
     return querySnapshot.docs.map(doc => ({

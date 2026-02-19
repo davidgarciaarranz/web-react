@@ -271,3 +271,27 @@
         font-size: 14px;
     }
 }
+
+.header-logo {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    height: 50px;
+
+    img {
+        height: 100%;
+        max-width: 150px;
+        object-fit: contain;
+    }
+
+    @media (max-width: 767px) {
+        height: 40px;
+
+        img {
+            max-width: 120px;
+        }
+    }
+}
