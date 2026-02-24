@@ -1,0 +1,177 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
+$accent: hsl(186 100% 69%);
+$mobile: 768px;
+
+.contactame {
+    width: 75%;
+    padding-bottom: 110px;
+    margin-top: 15px;
+    text-align: center;
+    background-color: black;
+}
+
+.glowing-btn {
+    position: relative;
+    color: $accent;
+    cursor: pointer;
+    padding: 0.35em 1em;
+    border: 0.15em solid $accent;
+    border-radius: 0.45em;
+    background: none;
+    perspective: 2em;
+    font-family: "Raleway", sans-serif;
+    font-size: 2em;
+    font-weight: 900;
+    box-shadow:
+        inset 0 0 0.5em 0 $accent,
+        0 0 0.5em 0 $accent;
+    animation: border-flicker 2s linear infinite;
+
+    @media (width < $mobile) {
+        font-size: 1em;
+        font-weight: 150;
+        letter-spacing: 0.1em;
+    }
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0.7;
+        filter: blur(1em);
+        transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
+        background: $accent;
+        pointer-events: none;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        z-index: -1;
+        background-color: $accent;
+        box-shadow: 0 0 2em 0.2em $accent;
+        transition: opacity 100ms linear;
+    }
+
+    &:hover {
+        color: rgba(0, 0, 0, 0.8);
+        animation: none;
+
+        &::before {
+            filter: blur(1.5em);
+            opacity: 1;
+        }
+
+        &::after {
+            opacity: 1;
+        }
+    }
+}
+
+.glowing-txt {
+    float: left;
+    margin-right: -0.8em;
+    text-shadow:
+        0 0 0.125em hsl(0 0% 100% / 0.3),
+        0 0 0.45em $accent;
+    animation: text-flicker 3s linear infinite;
+}
+
+.faulty-letter {
+    opacity: 0.5;
+    animation: faulty-flicker 2s linear infinite;
+    display: inline-block;
+}
+
+@keyframes faulty-flicker {
+
+    0%,
+    2% {
+        opacity: 0.1;
+    }
+
+    4%,
+    19% {
+        opacity: 0.5;
+    }
+
+    21% {
+        opacity: 0.1;
+    }
+
+    23% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 0.5;
+    }
+
+    83% {
+        opacity: 0.4;
+    }
+
+    87% {
+        opacity: 1;
+    }
+}
+
+@keyframes text-flicker {
+
+    0%,
+    8%,
+    12% {
+        opacity: 0.1;
+    }
+
+    2%,
+    9% {
+        opacity: 1;
+    }
+
+    20%,
+    30% {
+        opacity: 1;
+    }
+
+    25% {
+        opacity: 0.3;
+    }
+
+    70% {
+        opacity: 0.7;
+    }
+
+    72% {
+        opacity: 0.2;
+    }
+
+    77%,
+    100% {
+        opacity: 0.9;
+    }
+}
+
+@keyframes border-flicker {
+
+    0%,
+    4% {
+        opacity: 0.1;
+    }
+
+    2%,
+    8% {
+        opacity: 1;
+    }
+
+    70% {
+        opacity: 0.7;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}

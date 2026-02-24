@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 
 $accent: hsl(186 100% 69%);
-$mobile: 767px;
+$mobile: 768px;
 
 /*LAYOUT*/
 
@@ -11,6 +11,7 @@ $mobile: 767px;
     align-items: center;
     background-color: black;
     min-height: 100vh;
+    overflow: hidden;
 }
 
 .loading-state {
@@ -24,28 +25,16 @@ $mobile: 767px;
     font-size: 2rem;
 }
 
-.imgAutor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.imgAutor-1 {
+    display: block;
     width: 100%;
-}
+    height: auto;
+    margin-top: 20px;
+    aspect-ratio: 1083 / 609;
 
-.description-container {
-    width: 100%;
-    margin-top: 35px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.description {
-    width: 80%;
-    text-align: justify;
-    color: white;
-    font-size: 25px;
-    line-height: 1.5;
-    text-indent: 3rem;
+    @media (width >=$mobile) {
+        margin-top: 35px;
+    }
 }
 
 #gallery {
@@ -53,200 +42,4 @@ $mobile: 767px;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.youtube-container {
-    width: 80%;
-    aspect-ratio: 16 / 9;
-    margin-top: 20px;
-    border: none;
-
-    iframe {
-        width: 100%;
-        height: 100%;
-        border: none;
-    }
-}
-
-.imgAutor-1 {
-    margin-top: 20px;
-    width: 100%;
-    height: auto;
-
-}
-
-.contactame {
-    width: 75%;
-    padding-bottom: 110px;
-    margin-top: 15px;
-    text-align: center;
-    background-color: black;
-}
-
-/*SLIDER*/
-
-.slider {
-    position: relative;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    margin: 0 auto;
-
-    img {
-        width: 60%;
-        height: 60%;
-        object-fit: cover;
-        transition: opacity 0.5s ease;
-        margin-top: 5rem;
-        background-color: black;
-    }
-
-    .fade {
-        opacity: 0;
-    }
-
-    .prev,
-    .next {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 40px;
-        height: 40px;
-        border: none;
-        border-radius: 50%;
-        background-color: rgba(0, 0, 0, 0.5);
-        color: white;
-        font-size: 24px;
-        cursor: pointer;
-        z-index: 10;
-        transition: background-color 0.3s;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        &:hover {
-            background-color: $accent;
-            color: black;
-        }
-    }
-
-    .prev {
-        left: 15%;
-    }
-
-    .next {
-        right: 15%;
-    }
-}
-
-/*GLOW BUTTON*/
-
-.glowing-btn {
-    position: relative;
-    color: $accent;
-    cursor: pointer;
-    padding: 0.35em 1em;
-    border: 0.15em solid $accent;
-    border-radius: 0.45em;
-    background: none;
-    perspective: 2em;
-
-    font-family: "Raleway", sans-serif;
-    font-size: 2em;
-    font-weight: 900;
-
-    box-shadow:
-        inset 0 0 0.5em 0 $accent,
-        0 0 0.5em 0 $accent;
-
-    animation: border-flicker 2s linear infinite;
-
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        opacity: 0.7;
-        filter: blur(1em);
-        transform: translateY(120%) rotateX(95deg) scale(1, 0.35);
-        background: $accent;
-        pointer-events: none;
-    }
-
-    &::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        opacity: 0;
-        z-index: -1;
-        background-color: $accent;
-        box-shadow: 0 0 2em 0.2em $accent;
-        transition: opacity 100ms linear;
-    }
-
-    &:hover {
-        color: rgba(0, 0, 0, 0.8);
-        animation: none;
-
-        &::before {
-            filter: blur(1.5em);
-            opacity: 1;
-        }
-
-        &::after {
-            opacity: 1;
-        }
-    }
-}
-
-.glowing-txt {
-    float: left;
-    margin-right: -0.8em;
-    text-shadow:
-        0 0 0.125em hsl(0 0% 100% / 0.3),
-        0 0 0.45em $accent;
-
-    animation: text-flicker 3s linear infinite;
-}
-
-.faulty-letter {
-    opacity: 0.5;
-    animation: faulty-flicker 2s linear infinite;
-    display: inline-block;
-}
-
-/*MEDIA QUERIES*/
-
-@media (max-width: $mobile) {
-
-    .description {
-        width: 90%;
-        font-size: 18px;
-        line-height: 1;
-        text-indent: 1.5rem;
-    }
-
-    .youtube-container {
-        width: 90%;
-    }
-
-    .slider img {
-        width: 90%;
-        height: 90%;
-        margin-bottom: 2rem;
-    }
-
-    .slider .prev {
-        left: 5%;
-    }
-
-    .slider .next {
-        right: 5%;
-    }
-
-    .glowing-btn {
-        font-size: 1em;
-        font-weight: 150;
-        letter-spacing: 0.1em;
-    }
 }

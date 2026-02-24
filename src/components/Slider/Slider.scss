@@ -1,0 +1,76 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
+$color-primary: hsl(186 100% 69%);
+$color-bg: black;
+$bp-mobile: 768px;
+
+.slider {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+
+    @media (width < $bp-mobile) {
+        margin-bottom: 23px;
+    }
+
+    img {
+        width: 60%;
+        height: auto;
+        opacity: 1;
+        transition: opacity 0.3s ease;
+        background-color: $color-bg;
+        margin-top: 5rem;
+
+        &.fade {
+            opacity: 0;
+        }
+
+        @media (width < $bp-mobile) {
+            width: 90%;
+            margin-bottom: 2rem;
+        }
+    }
+
+    .prev,
+    .next {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border: none;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        border-radius: 50%;
+        z-index: 10;
+        transition: background-color 0.3s, color 0.3s;
+
+        &:hover {
+            background-color: $color-primary;
+            color: $color-bg;
+        }
+    }
+
+    .prev {
+        left: 15%;
+
+        @media (width < $bp-mobile) {
+            left: 5%;
+        }
+    }
+
+    .next {
+        right: 15%;
+
+        @media (width < $bp-mobile) {
+            right: 5%;
+        }
+    }
+}

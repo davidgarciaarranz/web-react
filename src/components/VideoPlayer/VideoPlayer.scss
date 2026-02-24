@@ -1,0 +1,14 @@
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
+
+$mobile: 768px;
+
+.youtube-container {
+    width: 80%;
+    aspect-ratio: 16 / 9;
+    margin-top: 20px;
+    border: none;
+
+    @media (width < $mobile) {
+        width: 90%;
+    }
+}
