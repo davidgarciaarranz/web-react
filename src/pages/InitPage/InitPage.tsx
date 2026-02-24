@@ -30,6 +30,7 @@ const InitPage = () => {
     const [hasError, setHasError] = useState(false);
     const [textoCopiado, setTextoCopiado] = useState(false);
     const [isFirefox, setIsFirefox] = useState(false);
+    const [visible, setVisible] = useState(true); //para transiciones img
 
     const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
 
@@ -61,29 +62,27 @@ const InitPage = () => {
     }, []);
 
     useEffect(() => {
-        startInterval();
-        return () => stopInterval();
+        intervalRef.current = setInterval(() => {
+            changeSlide(1);
+        }, 5000);
+
+        return () => {
+            if (intervalRef.current) clearInterval(intervalRef.current);
+        };
     }, []);
 
-    /*temp slider de imgs*/
-    const startInterval = () => {
-        stopInterval();
-        intervalRef.current = setInterval(() => {
-            nextSlide();
-        }, 3000);
+    const changeSlide = (direction: number) => {
+        setVisible(false);
+        setTimeout(() => {
+            setCurrentIndex(prev =>
+                (prev + direction + images.length) % images.length
+            );
+            setVisible(true);
+        }, 300);
     };
 
-    const stopInterval = () => {
-        if (intervalRef.current) clearInterval(intervalRef.current);
-    };
-
-    const nextSlide = () => {
-        setCurrentIndex((prev) => (prev + 1) % images.length);
-    };
-
-    const prevSlide = () => {
-        setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-    };
+    const nextSlide = () => changeSlide(1);
+    const prevSlide = () => changeSlide(-1);
 
     /*envia mail al hacer click en el boton glowing*/
     const enviarMail = () => {
@@ -140,7 +139,10 @@ const InitPage = () => {
                 {/* Slider de Imágenes con Controles id= phostos para futuros usos*/}
                 <div id="photos" className="slider">
                     <button className="prev" onClick={prevSlide}>&lt;</button>
-                    <img src={images[currentIndex]} alt={`Slider Image ${currentIndex + 1}`} />
+                    <img
+                        src={images[currentIndex]}
+                        className={visible ? "" : "fade"}
+                        alt={`Slider Image ${currentIndex + 1}`} />
                     <button className="next" onClick={nextSlide}>&gt;</button>
                 </div>
             </div>
@@ -149,8 +151,8 @@ const InitPage = () => {
                 <button className="glowing-btn" onClick={enviarMail}>
                     {!isFirefox && (
                         <span className="glowing-txt">
-                            ¿Hab<span className="faulty-letter">la<span className="faulty-letter"></span>mo</span>s?
-                            <span className="faulty-letter"> ✉</span>
+                            ¿ Hab<span className="faulty-letter">la<span className="faulty-letter"></span>mo</span>s ?
+                            <span className="faulty-letter">&nbsp;✉&nbsp;</span>
                         </span>
                     )}
 
