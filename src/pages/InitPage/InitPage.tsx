@@ -1,22 +1,22 @@
 import { useState, useEffect, useRef } from "react";
 import { getInfo } from "../../services/firebaseService";
-import portadaImg from "../../assets/images/portada.png";
+import portadaImg from "../../assets/images/portada.webp";
 import "./InitPage.scss";
 
 {/*imagenes del slider*/ }
 const images = [
-    "/assets/images/1.png",
-    "/assets/images/2.png",
-    "/assets/images/3.png",
-    "/assets/images/4.jpg",
-    "/assets/images/5.png",
-    "/assets/images/6.jpg",
-    "/assets/images/7.png",
-    "/assets/images/8.png",
-    "/assets/images/9.jpg",
-    "/assets/images/10.jpg",
-    "/assets/images/11.png",
-    "/assets/images/12.png",
+    "/assets/images/1.webp",
+    "/assets/images/2.webp",
+    "/assets/images/3.webp",
+    "/assets/images/4.webp",
+    "/assets/images/5.webp",
+    "/assets/images/6.webp",
+    "/assets/images/7.webp",
+    "/assets/images/8.webp",
+    "/assets/images/9.webp",
+    "/assets/images/10.webp",
+    "/assets/images/11.webp",
+    "/assets/images/12.webp",
 ];
 
 const InitPage = () => {
@@ -57,6 +57,22 @@ const InitPage = () => {
                 setIsLoading(false);
             }
         };
+
+        //SEO
+        //título de la pestaña
+        document.title = "Will Only Will";
+
+        let metaDesc = document.querySelector('meta[name="description"]');
+        const descContent = "Explora el portafolio de Will Only Will: proyecto creativo, contenido exclusivo y contacto directo."
+
+        if (metaDesc) {
+            metaDesc.setAttribute("content", descContent);
+        } else {
+            const meta = document.createElement('meta');
+            meta.name = "description";
+            meta.content = descContent;
+            document.head.appendChild(meta);
+        }
 
         loadData();
     }, []);
@@ -105,73 +121,86 @@ const InitPage = () => {
 
     /*contenedor principal de la pg*/
     return (
-        <div id="init" className="container">
-            {/* Contenido Izquierda - Imagen Autor */}
-            <div className="left-content">
+        <main id="init" className="container">
+            {/*Imagen Autor */}
+            <section className="imgAutor">
                 <img
                     className="imgAutor-1"
-                    alt="Logo"
+                    alt="Retrato de Will Only Will - Autor y Creativo"
                     src={portadaImg}
+                    loading="eager"
+                    fetchPriority="high"
+                    width="1083"
+                    height="609"
                 />
-            </div>
+            </section>
 
             {/* Contenedor de Descripción y Video */}
             {/*renderizado HTML puro desde firebase*/}
-            <div className="description-container">
-                <div
+            <section className="description-container">
+                <article
                     id="newsletter"
                     className="description"
                     dangerouslySetInnerHTML={{ __html: description }}
                 />
-            </div>
-            <div id="gallery">
+            </section>
+            {/* Galería de Imágenes */}
+            <section id="gallery">
                 {videovisible && (
                     <iframe
-                        title="Video Will Only Will"
+                        title="Video de presentación de Will Only Will"
                         className="youtube-container"
                         src={videourl}
-                        frameBorder="0"
+                        loading="lazy"
+                        style={{ border: 0 }}
                         allowFullScreen
                     ></iframe>
                 )}
 
-
                 {/* Slider de Imágenes con Controles id= phostos para futuros usos*/}
                 <div id="photos" className="slider">
-                    <button className="prev" onClick={prevSlide}>&lt;</button>
+                    <button
+                        className="prev"
+                        onClick={prevSlide}
+                        aria-label="Imagen anterior"
+                    >&lt;
+                    </button>
+
                     <img
                         src={images[currentIndex]}
                         className={visible ? "" : "fade"}
-                        alt={`Slider Image ${currentIndex + 1}`} />
-                    <button className="next" onClick={nextSlide}>&gt;</button>
+                        alt={`Muestra de portafolio número ${currentIndex + 1} de Will only Will`}
+                        height="1080"
+                        width="1080"
+                        loading="lazy"
+                    />
+
+                    <button
+                        className="next"
+                        onClick={nextSlide}
+                        aria-label="Siguiente imagen"
+                    >
+                        &gt;
+                    </button>
                 </div>
-            </div>
+            </section>
             {/* Sección de Contacto con Botón Glowing */}
-            <div id="contact" className="contactame">
-                <button className="glowing-btn" onClick={enviarMail}>
-                    {!isFirefox && (
-                        <span className="glowing-txt">
-                            ¿ Hab<span className="faulty-letter">la<span className="faulty-letter"></span>mo</span>s ?
-                            <span className="faulty-letter">&nbsp;✉&nbsp;</span>
-                        </span>
-                    )}
-
-                    {isFirefox && !textoCopiado && (
-                        <span className="glowing-txt">
-                            Copi<span className="faulty-letter">ar<span className="faulty-letter"></span> e-mail</span>
-                            al port<span className="faulty-letter">apapeles</span>
-                        </span>
-                    )}
-
-                    {textoCopiado && (
-                        <span className="glowing-txt">
-                            Copi<span className="faulty-letter">ado<span className="faulty-letter"></span>e-mail</span>
-                            al port<span className="faulty-letter">apapeles con éxito</span>
-                        </span>
-                    )}
+            <section id="contact" className="contactame">
+                <button
+                    className="glowing-btn"
+                    onClick={enviarMail}
+                    aria-label="Enviar correo electrónico a Will only Will"
+                >
+                    <span className="glowing-txt">
+                        {!isFirefox && (
+                            <>¿ Hab<span className="faulty-letter">la<span className="faulty-letter"></span>mo</span>s ? <span className="faulty-letter">✉</span></>
+                        )}
+                        {isFirefox && !textoCopiado && "Copiar e-mail al portapapeles"}
+                        {textoCopiado && "¡E-mail copiado con éxito!"}
+                    </span>
                 </button>
-            </div>
-        </div>
+            </section>
+        </main>
     );
 };
 

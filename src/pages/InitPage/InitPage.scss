@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Raleway");
+@import url("https://fonts.googleapis.com/css?family=Raleway&display=swap");
 
 $accent: hsl(186 100% 69%);
 $mobile: 767px;
@@ -24,7 +24,7 @@ $mobile: 767px;
     font-size: 2rem;
 }
 
-.left-content {
+.imgAutor {
     display: flex;
     flex-direction: column;
     align-items: center;
