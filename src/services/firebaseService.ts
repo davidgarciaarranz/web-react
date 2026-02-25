@@ -4,8 +4,8 @@ import {
     collection,
     getDocs,
     onSnapshot,
-    doc,
-    getDoc
+    /*doc,
+    getDoc*/
 } from "firebase/firestore";
 //LLAMADAS A LA COLECCIÓN CON FUNCIONES EN FIRESTORE CON MODELS/INFO.TS (PARA DEFINIR EL TIPADO)
 export const getInfo = async (): Promise<Info[]> => {

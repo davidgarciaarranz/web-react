@@ -5,7 +5,7 @@ import { initGA, trackPageView } from "../../utils/analytics";
 import { getInfo } from "../../services/firebaseService";
 
 const CookieModal = () => {
-    const { accepted, acceptCookies, rejectCookies } = useCookies();
+    const { accepted, acceptCookies, /*rejectCookies*/ } = useCookies();
     const [showDetails, setShowDetails] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [cookie, setCookie] = useState("");
