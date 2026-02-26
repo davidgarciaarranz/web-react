@@ -9,7 +9,7 @@ const AnalyticsTracker = () => {
 
     useEffect(() => {
         if (accepted) {
-            initGA(); // Asegura que esté iniciado
+            initGA();
             trackPageView(location.pathname + location.search);
         }
     }, [location, accepted]);
