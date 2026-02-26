@@ -16,6 +16,11 @@ export const initGA = () => {
     const script = document.createElement("script");
     script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
     script.async = true;
+    //si hay error
+    script.onerror = () => {
+        initialized = false;
+    }
+
     document.head.appendChild(script);
 
     window.dataLayer = window.dataLayer || [];
