@@ -29,7 +29,7 @@ export const initGA = () => {
     };
 
     window.gtag("js", new Date());
-    window.gtag("config", GA_ID);
+    window.gtag("config", GA_ID, { send_page_view: false });
 
     initialized = true;
 };

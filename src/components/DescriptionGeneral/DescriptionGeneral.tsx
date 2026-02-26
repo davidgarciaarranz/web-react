@@ -1,3 +1,5 @@
+import "./DescriptionGeneral.scss";
+
 interface DescriptionProps {
     content: string;
 }
