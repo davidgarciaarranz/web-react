@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useCookies } from "../../context/CookiesContext";
 import "./CookieModal.scss";
-import { initGA, trackPageView } from "../../utils/analytics";
 import { getInfo } from "../../services/firebaseService";
 
 const CookieModal = () => {
@@ -32,19 +31,9 @@ const CookieModal = () => {
     }, []);
 
 
-    /* Inicializar GA automáticamente si el usuario ya aceptó previamente */
-    useEffect(() => {
-        if (accepted) {
-            initGA();
-            trackPageView(window.location.pathname);
-        }
-    }, [accepted]);
-
     /* Maneja la aceptación desde el modal */
     const handleAccept = () => {
-        acceptCookies();  // Guarda en localStorage y actualiza estado
-        initGA();
-        trackPageView(window.location.pathname);
+        acceptCookies(); // AnalyticsTracker se encargará del resto al detectar el cambio de estado
     };
 
     /* Oculta el modal si ya se eligió */
