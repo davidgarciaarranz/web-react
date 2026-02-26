@@ -60,7 +60,7 @@ const InitPage = () => {
         document.title = "Will Only Will";
 
         let metaDesc = document.querySelector('meta[name="description"]');
-        const descContent = "Explora el portafolio de Will Only Will: proyecto creativo, contenido exclusivo y contacto directo."
+        const descContent = "Explora el mundo de Will Only Will: DJ, productor, contenido exclusivo y contacto directo."
 
         if (metaDesc) {
             metaDesc.setAttribute("content", descContent);

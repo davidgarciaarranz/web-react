@@ -12,6 +12,8 @@ $mobile: 768px;
     background-color: black;
     min-height: 100vh;
     overflow: hidden;
+    width: 100%; //para evitar saltos en pantallas tablet
+    max-width: 100vw;
 }
 
 .loading-state {
