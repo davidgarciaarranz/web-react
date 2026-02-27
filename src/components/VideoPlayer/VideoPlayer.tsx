@@ -3,7 +3,6 @@ import "./VideoPlayer.scss";
 interface VideoPlayerProps {
     url: string;
     visible: boolean;
-    title?: string;
 }
 
 const VideoPlayer = ({ url, visible, }: VideoPlayerProps) => {

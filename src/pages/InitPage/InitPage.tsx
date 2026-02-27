@@ -22,6 +22,8 @@ const images = [
     "/assets/images/10.webp",
     "/assets/images/11.webp",
     "/assets/images/12.webp",
+    "/assets/images/13.webp",
+    "/assets/images/14.webp",
 ];
 
 const InitPage = () => {
@@ -44,7 +46,7 @@ const InitPage = () => {
                     setMail(info.mail || "willonlywilllandingpage@gmail.com");
                     setDescription(info.description || "");
                     setVideoVisible(info.videovisible || false);
-                    setVideoUrl(`https://www.youtube.com/embed/${info.videourl || ""}`);
+                    setVideoUrl(`https://www.youtube-nocookie.com/embed/${info.videourl || ""}`);
                 }
             } catch (error) {
                 console.error("Error cargando datos de Firebase:", error);
@@ -60,7 +62,7 @@ const InitPage = () => {
         document.title = "Will Only Will";
 
         let metaDesc = document.querySelector('meta[name="description"]');
-        const descContent = "Explora el mundo de Will Only Will: DJ, productor, contenido exclusivo y contacto directo."
+        const descContent = "Will Only Will: DJ, mucho más que un DJ. Productor, creador de contenido exclusivo y contacto directo. Su estilo el EDM y Regueton"
 
         if (metaDesc) {
             metaDesc.setAttribute("content", descContent);
@@ -97,10 +99,12 @@ const InitPage = () => {
             {/* Contenedor de Descripción y Video */}
             {/*renderizado HTML puro desde firebase*/}
             <section className="description-container">
+                <h1>Sobre mí</h1>
                 <Description content={description} />
             </section>
             {/* Galería de Imágenes */}
             <section id="gallery">
+                <h1>Galería</h1>
                 <VideoPlayer
                     url={videourl}
                     visible={videovisible} />
@@ -109,7 +113,9 @@ const InitPage = () => {
                 <Slider images={images} />
             </section>
             {/* Sección de Contacto con Botón Glowing */}
+            <h1 id="contact-container">Contacto</h1>
             <ContactButton mail={mail} />
+
         </main>
     );
 };
