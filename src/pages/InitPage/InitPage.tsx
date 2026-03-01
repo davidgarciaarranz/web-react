@@ -7,6 +7,7 @@ import Slider from "../../components/Slider/Slider";
 import VideoPlayer from "../../components/VideoPlayer/VideoPlayer";
 import ContactButton from "../../components/ContactButton/ContactButton";
 import { useInfo } from "../../context/InfoContext";
+import CallButton from "../../components/CallButton/CallButton";
 
 const images = [
     "/assets/images/1.webp",
@@ -75,7 +76,9 @@ const InitPage = () => {
             </section>
 
             <h1 id="contact-container">Contacto</h1>
+            <CallButton phone={info?.phone || ""} visible={info?.phonevisible || false} />
             <ContactButton mail={info?.mail || ""} />
+
         </main>
     );
 };

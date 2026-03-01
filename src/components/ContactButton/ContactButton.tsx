@@ -38,7 +38,7 @@ const ContactButton = ({ mail }: ContactButtonProps) => {
             >
                 <span className="glowing-txt">
                     {!isFirefox && (
-                        <>¿ Hab<span className="faulty-letter">la<span className="faulty-letter"></span>mo</span>s ? <span className="faulty-letter">✉</span></>
+                        <><span className="faulty-letter">✉</span> ¿ Hab<span className="faulty-letter">la<span className="faulty-letter"></span>mo</span>s ?</>
                     )}
                     {isFirefox && !textoCopiado && "Copiar e-mail al portapapeles"}
                     {textoCopiado && "¡E-mail copiado con éxito!"}

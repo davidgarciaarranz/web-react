@@ -11,4 +11,5 @@ export interface Info {
     youtubeurl?: string;
     cookie: string;
     CookieInfo: string;
+    phonevisible: boolean;
 }

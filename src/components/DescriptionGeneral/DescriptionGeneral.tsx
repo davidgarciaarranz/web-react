@@ -1,4 +1,5 @@
 import "./DescriptionGeneral.scss";
+import { sanitize } from "../../utils/sanitize";
 
 interface DescriptionProps {
     content: string;
@@ -9,7 +10,7 @@ const Description = ({ content }: DescriptionProps) => {
         <article
             id="newsletter"
             className="description"
-            dangerouslySetInnerHTML={{ __html: content }}
+            dangerouslySetInnerHTML={{ __html: sanitize(content) }}
         />
     );
 };

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useCookies } from "../../context/CookiesContext";
 import { useInfo } from "../../context/InfoContext";
 import "./CookieModal.scss";
+import { sanitize } from "../../utils/sanitize";
 
 const CookieModal = () => {
     const { accepted, acceptCookies } = useCookies();
@@ -22,7 +23,7 @@ const CookieModal = () => {
 
                 <div
                     className="cookie-content"
-                    dangerouslySetInnerHTML={{ __html: info?.cookie || "" }}
+                    dangerouslySetInnerHTML={{ __html: sanitize(info?.cookie || "") }}
                 />
 
                 <span
@@ -35,7 +36,7 @@ const CookieModal = () => {
                 {showDetails && (
                     <div
                         className="cookie-details"
-                        dangerouslySetInnerHTML={{ __html: info?.CookieInfo || "" }}
+                        dangerouslySetInnerHTML={{ __html: sanitize(info?.CookieInfo || "") }}
                     />
                 )}
 
