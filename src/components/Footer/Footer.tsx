@@ -1,35 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import { getInfo } from '../../services/firebaseService';
-import type { Info } from '../../models/Info';
+import React from 'react';
+import { useInfo } from '../../context/InfoContext';
 import './Footer.scss';
 
-// Assets (Assuming they are copied to src/assets)
 import facebookIcon from '../../assets/icons/facebook.svg';
 import instagramIcon from '../../assets/icons/instagram.svg';
 import tiktokIcon from '../../assets/icons/tik-tok.svg';
 import youtubeIcon from '../../assets/icons/youtube.svg';
 
 const Footer: React.FC = () => {
-    const [info, setInfo] = useState<Info | null>(null);
+    const { info } = useInfo();
 
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const data = await getInfo();
-                if (data && data.length > 0) {
-                    setInfo(data[0]);
-                }
-            } catch (error) {
-                console.error("Error fetching info:", error);
-            }
-        };
-        fetchData();
-    }, []);
-
-    const goTo = (url: string | undefined) => {
-        if (url) {
-            window.open(url, '_blank', 'noopener,noreferrer');
-        }
+    const goTo = (url: string) => {
+        window.open(url, '_blank', 'noopener,noreferrer');
     };
 
     return (
